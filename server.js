@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get('/api/timestamp/:date_string', function(req,res){
   if(req.params.date_string === ''){
-    date_string = new Date();
+    req.params.date_string = new Date();
   }
   const isvalid = Date.parse(req.params.date_string);
   if(isvalid){
@@ -38,7 +38,7 @@ app.get('/api/timestamp/:date_string', function(req,res){
     });
   }
   else{
-    console.log("ERROR");
+    res.json({error: "Invalid Date"});
   }
 });
 
