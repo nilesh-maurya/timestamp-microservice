@@ -24,8 +24,8 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
-app.get('/api/timestamp/:date_string', function(req,res){
-  if(req.params.date_string === ''){
+app.get(`/api/timestamp/:date_string' || '/api/timestamp'`, function(req,res){
+  if(!req.params.date_string){
     req.params.date_string = new Date();
   }
   const isvalid = Date.parse(req.params.date_string);
